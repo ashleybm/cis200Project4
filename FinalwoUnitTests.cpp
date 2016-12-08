@@ -217,7 +217,7 @@ int main()
 	//Handles Train Queue
 	while (!tempTrainQueue.empty())
 	{
-
+		//Adds to stack of five.
 		for (int i = 0; i < 5; i++)
 		{
 			if (!tempTrainQueue.empty()) {
@@ -225,6 +225,7 @@ int main()
 				tempTrainQueue.pop();
 			}
 		}
+		//Handles stack of 5
 		while (!stackOf5.empty())
 		{
 			trains[stackOf5.top()]->load(dockTrainTime);
@@ -243,7 +244,7 @@ int main()
 	}
 	cout << endl;
 
-	
+	//Empties the convBelt
 	while (!convBelt.empty())
 	{
 		planes[convBelt.front()]->load(dockPlaneTime);
