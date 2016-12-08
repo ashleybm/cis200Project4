@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <stack>
+
 #include<iostream>
 #include<string>
 #include<stack>
@@ -120,7 +118,7 @@ int main()
 		}
 	}
 	tempNrOfPackages = 0;
-	if (nrTrains > 0)
+	if (nrPlanes > 0)
 	{
 		for (int i = 1; i < nrPlanes + 1; i++)
 		{
