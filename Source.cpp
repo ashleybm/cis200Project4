@@ -27,8 +27,8 @@ public:
 	}
 	void load(int docTime)
 	{
-		time = docTime + ((trainNr * TRAIN_LOAD_TIME) / 2);//divided by 2 because this is only half way.
-														//There is still the trip back to the dock.
+		time = docTime + ((trainNr * TRAIN_LOAD_TIME) / 2); //divided by 2 because this is only half way.
+															//There is still the trip back to the dock.
 	}
 	int getTime()
 	{
@@ -100,11 +100,11 @@ int main()
 	trains = new Train *[nrTrains];
 	planes = new Plane *[nrPlanes];
 	int tempNrOfPackages = 0;
-	for (int i = 1; i <= nrTrains; i++)
+	for (int i = 1; i < nrTrains + 1; i++)
 	{
 		cin >> nrPackage;
 		tempNrOfPackages = tempNrOfPackages + nrPackage;
-		try
+		/*try
 		{
 			if (tempNrOfPackages > trainTotalPackages)
 				throw excededTotalNubmerOfPackages(trainTotalPackages, "trains");
@@ -114,16 +114,16 @@ int main()
 			e.error();
 			cin >> nrPackage;
 			tempNrOfPackages = tempNrOfPackages + nrPackage;
-		}
+		}*/
 		trains[i] = new Train(i, nrPackage);
 	}
 	tempNrOfPackages = 0;
-	for (int i = 1; i <= nrPlanes; i++)
+	for (int i = 1; i < nrPlanes + 1; i++)
 	{
 
 		cin >> nrPackage;
 		tempNrOfPackages = tempNrOfPackages + nrPackage;
-		try
+		/*try
 		{
 			if (tempNrOfPackages > planeTotalPackages)
 				throw excededTotalNubmerOfPackages(planeTotalPackages, "planes");
@@ -131,7 +131,7 @@ int main()
 		catch (excededTotalNubmerOfPackages e)
 		{
 			e.error();
-		}
+		}*/
 		planes[i] = new Plane(i, nrPackage);
 		
 	}
@@ -141,13 +141,13 @@ int main()
 	for (int i = 0; i < trainTotalPackages; i++)
 	{
 		cin >> packageId; 
-		try {
+		/*try {
 			if (packageId > nrTrains || packageId <= 0)
 				throw noSuchIdException("Train", packageId);
 		}
 		catch (noSuchIdException e) {
 			e.error();
-		}
+		}*/
 
 		tempTrainQueue.push(packageId);
 	}
@@ -155,23 +155,26 @@ int main()
 	for (int i = 0; i < planeTotalPackages; i++)
 	{
 		cin >> packageId;
-		try {
+		/*try {
 			if (packageId > nrPlanes || packageId <= 0)
 				throw noSuchIdException("Plane", packageId);
 		}
 		catch (noSuchIdException e) {
 			e.error();
-		}
+		}*/
 		convBelt.push(packageId);
 	}
 	int dockTrainTime = 0;
 
 	while (!tempTrainQueue.empty())
 	{
-		for (int i = 0; i < 5; i++)
+		
+		for(int i = 0; i < 5 ; i++)
 		{
-			stackOf5.push(tempTrainQueue.front());
-			tempTrainQueue.pop();
+			if (!tempTrainQueue.empty()) {
+				stackOf5.push(tempTrainQueue.front());
+				tempTrainQueue.pop();
+			}
 		}
 		while (!stackOf5.empty())
 		{
