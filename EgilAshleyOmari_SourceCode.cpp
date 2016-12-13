@@ -237,7 +237,7 @@ int main()
 
 	int dockPlaneTime = 0;
 
-	//Handles Plane Queue
+	//Handles Trains
 	if (trainTotalPackages > 0 && nrTrains > 0 && nrTrains < 100) 
 	{
 
